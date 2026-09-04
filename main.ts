@@ -1,10 +1,10 @@
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
     info.changeScoreBy(1)
-    pause(100)
+    pause(500)
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     info.changeScoreBy(-1)
-    pause(100)
+    pause(500)
 })
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -238,6 +238,6 @@ let palitonegro = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Projectile)
 palitonegro.setPosition(45, 12)
-palitonegro.ay = 20
+palitonegro.ay = 40
 palitonegro.setBounceOnWall(true)
 controller.moveSprite(palitonegro, 100, 0)
