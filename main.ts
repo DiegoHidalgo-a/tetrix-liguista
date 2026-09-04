@@ -1,3 +1,11 @@
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Player, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    pause(100)
+})
+sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    info.changeScoreBy(-1)
+    pause(100)
+})
 scene.setBackgroundImage(img`
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
     1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111
@@ -162,6 +170,7 @@ let mySprite = sprites.create(img`
     ........................................
     ........................................
     `, SpriteKind.Player)
+effects.starField.startScreenEffect()
 let mySprite2 = sprites.create(img`
     ........................................
     ........................................
@@ -203,7 +212,7 @@ let mySprite2 = sprites.create(img`
     ..........22222222222222222222222.......
     ..........22222222222222222222222.......
     ........................................
-    `, SpriteKind.Player)
+    `, SpriteKind.Enemy)
 mySprite.setPosition(29, 107)
 mySprite2.setPosition(118, 107)
 mySprite.setVelocity(50, 0)
@@ -227,28 +236,8 @@ let palitonegro = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
+    `, SpriteKind.Projectile)
 palitonegro.setPosition(45, 12)
-let palitorojo = sprites.create(img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . 2 2 2 2 2 2 . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `, SpriteKind.Player)
-palitorojo.setPosition(122, 9)
 palitonegro.ay = 20
-palitorojo.ay = 20
-palitorojo.setBounceOnWall(true)
 palitonegro.setBounceOnWall(true)
+controller.moveSprite(palitonegro, 100, 0)
